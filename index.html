@@ -48,7 +48,7 @@
     <style type="text/tailwindcss">
         @layer base {
             body {
-                @apply bg-brand-charcoal text-brand-ivory font-sans antialiased;
+                @apply bg-[#050505] text-brand-ivory font-sans antialiased;
             }
             h1, h2, h3 {
                 @apply font-serif;
@@ -80,7 +80,15 @@
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="relative overflow-x-hidden">
+
+    <!-- Ambient Luxury Background Options -->
+    <!-- Noise Grain -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] opacity-[0.04]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+    
+    <!-- Ambient Glows -->
+    <div class="fixed top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-gold opacity-[0.03] blur-[120px] pointer-events-none z-[-2]"></div>
+    <div class="fixed bottom-[10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-gold opacity-[0.02] blur-[150px] pointer-events-none z-[-2]"></div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 flex justify-between items-center px-8 py-6 backdrop-blur-md bg-black/20 border-b border-white/5">
@@ -97,7 +105,7 @@
     </nav>
 
     <!-- 3D Scroll Hero Section -->
-    <section id="hero-3d" class="relative bg-brand-charcoal overflow-visible">
+    <section id="hero-3d" class="relative bg-transparent overflow-visible">
         <!-- Scroll Height Container -->
         <div id="scroll-height" class="h-[600vh]">
             <!-- Sticky Container for Canvas and Overlays -->
@@ -171,14 +179,14 @@
             <div class="absolute -top-24 -left-12 opacity-[0.03] text-[15vw] font-serif italic pointer-events-none select-none">Atelier</div>
             
             <div class="w-full md:w-3/5 reveal-on-scroll relative z-10">
-                <div class="relative group bg-[#111] p-1 shadow-2xl overflow-hidden">
-                    <img src="assets/movement.png" alt="Movement Detail" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105">
+                <div class="relative group bg-gradient-to-br from-[#151515] to-[#080808] p-2 shadow-[0_12px_40px_0_rgba(0,0,0,0.8)] border border-white/5 hover:border-brand-gold/20 transition-all duration-700 overflow-hidden">
+                    <img src="assets/movement.png" alt="Movement Detail" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105 opacity-90 group-hover:opacity-100 mix-blend-lighten">
                     <!-- Elegant Overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
                     <!-- Label -->
                     <div class="absolute bottom-8 left-8 text-brand-gold tracking-widest text-[10px] uppercase italic">Caliber 3133 Automatic</div>
                     <!-- Watermark Cover -->
-                    <div class="absolute bottom-0 right-0 bg-black/90 px-4 py-2 text-[8px] text-white/50 border-white/5 uppercase tracking-widest z-10">Lal Times</div>
+                    <div class="absolute bottom-0 right-0 bg-black/90 px-4 py-2 text-[8px] text-white/50 border-t border-l border-white/10 uppercase tracking-widest z-10 hidden">Lal Times</div>
                 </div>
             </div>
 
@@ -221,11 +229,11 @@
             
             <!-- First Card: Large Focus -->
             <div class="w-full md:w-[60%] group reveal-on-scroll relative">
-                <div class="bg-[#0D0D0D] p-12 md:p-24 shadow-2xl transition-all duration-700 hover:bg-[#111]">
+                <div class="bg-gradient-to-br from-[#121212] to-[#0A0A0A] p-12 md:p-24 shadow-[0_12px_40px_0_rgba(0,0,0,0.8)] border border-white/5 transition-all duration-700 hover:border-brand-gold/20 backdrop-blur-sm">
                     <div class="relative overflow-hidden group">
-                        <img src="assets/collection1.png" alt="The Classicist" class="w-full transition-transform duration-1000 group-hover:scale-105 mb-12 aspect-[4/5] object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 shadow-2xl">
+                        <img src="assets/collection1.png" alt="The Classicist" class="w-full transition-transform duration-1000 group-hover:scale-105 mb-12 aspect-[4/5] object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 shadow-2xl mix-blend-lighten">
                         <!-- Watermark Cover -->
-                        <div class="absolute bottom-0 right-0 bg-black px-5 py-2 text-[9px] text-brand-gold border-white/10 tracking-[0.2em] font-bold italic">Lal Times</div>
+                        <div class="absolute bottom-0 right-0 bg-black px-5 py-2 text-[9px] text-brand-gold border-t border-l border-white/10 tracking-[0.2em] font-bold italic hidden">Lal Times</div>
                     </div>
                     <div class="flex justify-between items-end">
                         <div>
@@ -239,11 +247,11 @@
 
             <!-- Second Card: Off-set and Elevated -->
             <div class="w-full md:w-[30%] md:mt-48 group reveal-on-scroll relative">
-                <div class="bg-[#0D0D0D] p-10 shadow-2xl transition-all duration-700 hover:bg-[#111] border border-white/5">
+                <div class="bg-gradient-to-br from-[#151515] to-[#0D0D0D] p-10 shadow-[0_12px_40px_0_rgba(0,0,0,0.8)] transition-all duration-700 border border-white/5 hover:border-brand-gold/20 backdrop-blur-sm relative z-10">
                     <div class="relative overflow-hidden group">
-                        <img src="assets/hero.png" alt="Nocturnal Skeleton" class="w-full transition-transform duration-1000 group-hover:scale-110 mb-8 aspect-[3/4] object-cover">
+                        <img src="assets/hero.png" alt="Nocturnal Skeleton" class="w-full transition-transform duration-1000 group-hover:scale-110 mb-8 aspect-[3/4] object-cover opacity-90 group-hover:opacity-100 mix-blend-lighten">
                         <!-- Watermark Cover -->
-                        <div class="absolute bottom-0 right-0 bg-black px-4 py-2 text-[8px] text-brand-gold border-white/10 uppercase tracking-widest">Lal Times</div>
+                        <div class="absolute bottom-0 right-0 bg-black px-4 py-2 text-[8px] text-brand-gold border-t border-l border-white/10 uppercase tracking-widest hidden">Lal Times</div>
                     </div>
                     <div class="text-center">
                         <h3 class="text-2xl italic mb-3">Nocturnal <br>Skeleton</h3>
@@ -255,11 +263,11 @@
 
             <!-- Third Card: Floating and Smaller -->
             <div class="w-full md:w-[40%] md:ml-auto group reveal-on-scroll relative md:-mt-32">
-                <div class="bg-[#0D0D0D] p-12 shadow-2xl transition-all duration-700 hover:bg-[#111] border border-white/5">
+                <div class="bg-gradient-to-b from-[#121212] to-transparent p-12 shadow-[0_12px_40px_0_rgba(0,0,0,0.8)] transition-all duration-700 border border-white/5 hover:border-brand-gold/20 backdrop-blur-md">
                     <div class="relative overflow-hidden group">
-                        <img src="assets/collection1.png" alt="The Modernist" class="w-full transition-transform duration-1000 group-hover:scale-110 mb-10 aspect-[16/9] object-cover contrast-110">
+                        <img src="assets/collection1.png" alt="The Modernist" class="w-full transition-transform duration-1000 group-hover:scale-110 mb-10 aspect-[16/9] object-cover contrast-110 opacity-80 group-hover:opacity-100">
                         <!-- Watermark Cover -->
-                        <div class="absolute bottom-0 right-0 bg-black px-4 py-2 text-[8px] text-brand-gold border-white/10 uppercase tracking-widest">Lal Times</div>
+                        <div class="absolute bottom-0 right-0 bg-black px-4 py-2 text-[8px] text-brand-gold border-t border-l border-white/10 uppercase tracking-widest hidden">Lal Times</div>
                     </div>
                     <div class="flex justify-between items-center">
                         <h3 class="text-3xl italic">The Modernist</h3>
