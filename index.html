@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lal Times | Timeless Precision</title>
+    <meta name="description" content="Discover the world of Lal Times. Premium luxury watches crafted with unmatched precision and timeless design.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A059',
+                            charcoal: '#0A0A0A',
+                            ivory: '#F5F5F5',
+                            slate: '#1F2937',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'reveal': 'reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        reveal: {
+                            '0%': { transform: 'scaleX(0)', transformOrigin: 'left' },
+                            '100%': { transform: 'scaleX(1)', transformOrigin: 'left' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-brand-charcoal text-brand-ivory font-sans antialiased;
+            }
+            h1, h2, h3 {
+                @apply font-serif;
+            }
+        }
+        @layer components {
+            .nav-link {
+                @apply text-sm uppercase tracking-widest hover:text-brand-gold transition-colors duration-300;
+            }
+            .btn-premium {
+                @apply px-8 py-4 border border-brand-gold text-brand-gold uppercase tracking-widest text-xs hover:bg-brand-gold hover:text-brand-charcoal transition-all duration-500 relative overflow-hidden;
+            }
+            .reveal-text {
+                @apply opacity-0 translate-y-10 transition-all duration-1000;
+            }
+            .reveal-text.active {
+                @apply opacity-100 translate-y-0;
+            }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 flex justify-between items-center px-8 py-6 backdrop-blur-md bg-black/20 border-b border-white/5">
+        <div class="text-2xl font-serif tracking-[0.2em] font-bold">Lal Times</div>
+        <div class="hidden md:flex space-x-12">
+            <a href="#hero" class="nav-link">Home</a>
+            <a href="#craftsmanship" class="nav-link">Craftsmanship</a>
+            <a href="#collection" class="nav-link">Collection</a>
+            <a href="#heritage" class="nav-link">Heritage</a>
+        </div>
+        <div>
+            <a href="#waitlist" class="btn-premium py-2 px-6">Enquire</a>
+        </div>
+    </nav>
+
+    <!-- 3D Scroll Hero Section -->
+    <section id="hero-3d" class="relative bg-brand-charcoal overflow-visible">
+        <!-- Scroll Height Container -->
+        <div id="scroll-height" class="h-[600vh]">
+            <!-- Sticky Container for Canvas and Overlays -->
+            <div class="sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center justify-center">
+                
+                <!-- Canvas Layer -->
+                <div class="absolute inset-0 z-0 flex items-center justify-center p-4">
+                    <canvas id="hero-canvas" class="max-w-full max-h-full object-contain"></canvas>
+                    
+                    <!-- Watermark Cover -->
+                    <div class="absolute bottom-0 right-0 bg-black px-8 py-8 shadow-2xl border-t border-l border-white/10 z-20">
+                        <span class="text-brand-gold uppercase tracking-[0.3em] text-[11px] font-bold italic">Lal Times Ateliers</span>
+                    </div>
+                </div>
+
+                <!-- Text Overlay Layer -->
+                <div class="relative z-10 w-full h-full pointer-events-none">
+                    
+                    <!-- Feature 1: The Art of Horology -->
+                    <div id="feature-1" class="absolute inset-0 flex flex-col items-center justify-center text-center opacity-0 transition-opacity duration-700 px-4">
+                        <span class="uppercase tracking-[0.5em] text-brand-gold mb-6 italic">Established 1892</span>
+                        <h1 class="text-6xl md:text-8xl leading-tight">Precision in <br><span class="italic font-normal">Every Second</span></h1>
+                        <p class="text-lg md:text-xl text-brand-ivory/40 mt-8 max-w-xl font-light italic">A masterpiece of mechanical complexity and aesthetic grace.</p>
+                    </div>
+
+                    <!-- Feature 2: Mechanical Precision -->
+                    <div id="feature-2" class="absolute inset-0 flex flex-col items-start justify-center text-left opacity-0 transition-opacity duration-700 px-10 md:px-32">
+                        <span class="text-brand-gold uppercase tracking-widest text-sm mb-4">Mechanical Mastery</span>
+                        <h2 class="text-5xl md:text-7xl mb-6 italic">240 Components,<br>One Goal.</h2>
+                        <div class="w-24 h-[1px] bg-brand-gold/30"></div>
+                        <p class="text-brand-ivory/50 mt-8 max-w-md font-light leading-relaxed">
+                            Every rotation is powered by our in-house caliber, hand-assembled over 300 hours of precision craftsmanship.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3: Hand-Finished Gold -->
+                    <div id="feature-3" class="absolute inset-0 flex flex-col items-end justify-center text-right opacity-0 transition-opacity duration-700 px-10 md:px-32">
+                        <span class="text-brand-gold uppercase tracking-widest text-sm mb-4">Hand-Finished Excellence</span>
+                        <h2 class="text-5xl md:text-7xl mb-6 italic">Pure 18K Gold</h2>
+                        <div class="w-24 h-[1px] bg-brand-gold/30 ml-auto"></div>
+                        <p class="text-brand-ivory/50 mt-8 max-w-md font-light leading-relaxed">
+                            Gleaming rose gold, polished to a mirror finish, meeting the strength of scratch-resistant sapphire crystal.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4: The Final Reveal -->
+                    <div id="feature-4" class="absolute inset-0 flex flex-col items-center justify-center text-center opacity-0 transition-opacity duration-700 px-4">
+                        <h2 class="text-6xl md:text-8xl mb-12 italic">Timeless <span class="text-brand-gold">Elegance</span></h2>
+                        <div class="flex space-x-6 pointer-events-auto">
+                            <a href="#collection" class="btn-premium">Explore Collection</a>
+                            <a href="#craftsmanship" class="px-8 py-4 uppercase tracking-widest text-xs hover:text-brand-gold transition-colors">Our Heritage</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Scroll Progress Bar (Subtle) -->
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-white/10 overflow-hidden">
+                    <div id="progress-bar" class="w-0 h-full bg-brand-gold transition-all duration-300"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Craftsmanship Section (Editorial Layout) -->
+    <section id="craftsmanship" class="py-48 px-4 md:px-20 bg-[#0A0A0A] overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 relative">
+            
+            <!-- Floating Background Motto -->
+            <div class="absolute -top-24 -left-12 opacity-[0.03] text-[15vw] font-serif italic pointer-events-none select-none">Atelier</div>
+            
+            <div class="w-full md:w-3/5 reveal-on-scroll relative z-10">
+                <div class="relative group bg-[#111] p-1 shadow-2xl overflow-hidden">
+                    <img src="assets/movement.png" alt="Movement Detail" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105">
+                    <!-- Elegant Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <!-- Label -->
+                    <div class="absolute bottom-8 left-8 text-brand-gold tracking-widest text-[10px] uppercase italic">Caliber 3133 Automatic</div>
+                    <!-- Watermark Cover -->
+                    <div class="absolute bottom-0 right-0 bg-black/90 px-4 py-2 text-[8px] text-white/50 border-white/5 uppercase tracking-widest z-10">Lal Times</div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-2/5 reveal-on-scroll z-20 md:-ml-24 mt-12 md:mt-0">
+                <div class="bg-black/80 backdrop-blur-xl p-12 md:p-16 border border-white/5 shadow-2xl">
+                    <span class="text-brand-gold uppercase tracking-[0.4em] text-[10px] mb-8 block font-semibold leading-none">The Soul of the Machine</span>
+                    <h2 class="text-5xl md:text-7xl mb-10 leading-tight tracking-tight">Mastery in <br><span class="italic font-normal">Every Gear.</span></h2>
+                    <p class="text-brand-ivory/50 leading-relaxed mb-10 text-lg font-light tracking-wide italic">
+                        Each Lal Times timepiece is a masterpiece of engineering. Our mechanical movements are hand-assembled by master watchmakers, featuring over 240 individual components.
+                    </p>
+                    <ul class="space-y-6 mb-12">
+                        <li class="flex items-center space-x-6">
+                            <span class="w-10 h-[1px] bg-brand-gold/50"></span>
+                            <span class="text-[11px] uppercase tracking-[0.3em] font-light">72-Hour Power Reserve</span>
+                        </li>
+                        <li class="flex items-center space-x-6">
+                            <span class="w-10 h-[1px] bg-brand-gold/50"></span>
+                            <span class="text-[11px] uppercase tracking-[0.3em] font-light">32-Jewel Mechanical Heart</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-block pb-2 border-b border-brand-gold/30 text-brand-gold uppercase tracking-[0.3em] text-[10px] italic hover:border-brand-gold transition-colors">Our Horological Heritage</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection (Layered Asymmetrical Layout) -->
+    <section id="collection" class="py-48 bg-[#070707] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-32 flex flex-col md:flex-row items-end justify-between gap-8">
+            <div class="text-left reveal-on-scroll">
+                <span class="text-brand-gold uppercase tracking-[0.4em] text-[10px] mb-4 block font-semibold">The 2024 Collection</span>
+                <h2 class="text-6xl md:text-8xl tracking-tight">The Curated <br><span class="italic font-normal">Gallery</span></h2>
+            </div>
+            <div class="reveal-on-scroll max-w-sm text-brand-ivory/40 text-sm font-light leading-relaxed italic border-l border-brand-gold/20 pl-8">
+                Explore a symphony of gold, sapphire, and time-honored mechanical mastery. Designed for the discerning collector.
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative flex flex-wrap gap-24 items-start">
+            
+            <!-- First Card: Large Focus -->
+            <div class="w-full md:w-[60%] group reveal-on-scroll relative">
+                <div class="bg-[#0D0D0D] p-12 md:p-24 shadow-2xl transition-all duration-700 hover:bg-[#111]">
+                    <div class="relative overflow-hidden group">
+                        <img src="assets/collection1.png" alt="The Classicist" class="w-full transition-transform duration-1000 group-hover:scale-105 mb-12 aspect-[4/5] object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 shadow-2xl">
+                        <!-- Watermark Cover -->
+                        <div class="absolute bottom-0 right-0 bg-black px-5 py-2 text-[9px] text-brand-gold border-white/10 tracking-[0.2em] font-bold italic">Lal Times</div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <h3 class="text-4xl italic mb-3">The Classicist</h3>
+                            <p class="text-brand-gold font-sans uppercase tracking-[0.4em] text-[10px] font-bold">$12,400 <span class="text-white/20 italic font-normal ml-4">In Stock</span></p>
+                        </div>
+                        <button class="px-10 py-4 border border-white/10 text-brand-gold text-[10px] uppercase tracking-[0.3em] italic hover:bg-brand-gold hover:text-black transition-all">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Card: Off-set and Elevated -->
+            <div class="w-full md:w-[30%] md:mt-48 group reveal-on-scroll relative">
+                <div class="bg-[#0D0D0D] p-10 shadow-2xl transition-all duration-700 hover:bg-[#111] border border-white/5">
+                    <div class="relative overflow-hidden group">
+                        <img src="assets/hero.png" alt="Nocturnal Skeleton" class="w-full transition-transform duration-1000 group-hover:scale-110 mb-8 aspect-[3/4] object-cover">
+                        <!-- Watermark Cover -->
+                        <div class="absolute bottom-0 right-0 bg-black px-4 py-2 text-[8px] text-brand-gold border-white/10 uppercase tracking-widest">Lal Times</div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl italic mb-3">Nocturnal <br>Skeleton</h3>
+                        <p class="text-brand-gold uppercase tracking-[0.3em] text-[9px] mb-8 font-bold">$18,900</p>
+                        <button class="w-full py-4 bg-white/5 hover:bg-brand-gold hover:text-black text-[10px] uppercase tracking-[0.3em] transition-all">Enquire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Card: Floating and Smaller -->
+            <div class="w-full md:w-[40%] md:ml-auto group reveal-on-scroll relative md:-mt-32">
+                <div class="bg-[#0D0D0D] p-12 shadow-2xl transition-all duration-700 hover:bg-[#111] border border-white/5">
+                    <div class="relative overflow-hidden group">
+                        <img src="assets/collection1.png" alt="The Modernist" class="w-full transition-transform duration-1000 group-hover:scale-110 mb-10 aspect-[16/9] object-cover contrast-110">
+                        <!-- Watermark Cover -->
+                        <div class="absolute bottom-0 right-0 bg-black px-4 py-2 text-[8px] text-brand-gold border-white/10 uppercase tracking-widest">Lal Times</div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-3xl italic">The Modernist</h3>
+                        <p class="text-brand-gold uppercase tracking-[0.3em] text-[10px] font-bold">$9,800</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Heritage (Centered Minimalist Excellence) -->
+    <section id="heritage" class="py-60 bg-[#0A0A0A] relative flex items-center justify-center overflow-hidden border-t border-white/5">
+        <div class="absolute inset-0 opacity-[0.03] flex items-center justify-center pointer-events-none select-none">
+            <span class="text-[40vw] font-serif italic uppercase tracking-tighter">TIME</span>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 text-center z-10 reveal-on-scroll">
+            <span class="text-brand-gold uppercase tracking-[0.6em] text-[11px] mb-12 block font-bold leading-none italic">Est. 1892 Geneva</span>
+            <h2 class="text-6xl md:text-8xl mb-16 italic tracking-tight font-light leading-[1.1]">Defining the <br><span class="text-brand-gold">Future of Time.</span></h2>
+            <div class="w-32 h-[1px] bg-brand-gold/30 mx-auto mb-16"></div>
+            <p class="text-2xl text-brand-ivory/40 leading-relaxed font-light italic mb-24 max-w-2xl mx-auto tracking-wide">
+                "We don't just measure time, we honor it. Every tick is a testament to the pursuit of perfection."
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-16 md:gap-24 opacity-80">
+                <div class="text-center">
+                    <div class="text-4xl text-brand-gold font-light mb-3 italic">130+</div>
+                    <div class="text-[10px] uppercase tracking-[0.4em] text-white/40">Years of History</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl text-brand-gold font-light mb-3 italic">240</div>
+                    <div class="text-[10px] uppercase tracking-[0.4em] text-white/40">Hand-Set Parts</div>
+                </div>
+                <div class="text-center col-span-2 md:col-span-1">
+                    <div class="text-4xl text-brand-gold font-light mb-3 italic">Limited</div>
+                    <div class="text-[10px] uppercase tracking-[0.4em] text-white/40">Production</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Waitlist (Integrated Luxury Footer) -->
+    <footer id="footer" class="bg-[#070707] pt-48 pb-20 border-t border-white/5 reveal-on-scroll">
+        <div class="max-w-7xl mx-auto px-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-24 mb-32">
+                
+                <!-- Brand Column -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="text-3xl font-serif tracking-[0.2em] font-bold mb-10">LAL TIMES</div>
+                    <p class="text-brand-ivory/40 text-sm italic font-light leading-relaxed max-w-sm mb-12">
+                        Defining the future of horological excellence since 1892. Every timepiece is a testament to the pursuit of mechanical perfection.
+                    </p>
+                    <div class="flex space-x-6 text-brand-gold">
+                        <a href="#" class="hover:text-white transition-colors"><span class="sr-only">Instagram</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" class="hover:text-white transition-colors"><span class="sr-only">Facebook</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Collections Column -->
+                <div>
+                    <h4 class="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-10">Selections</h4>
+                    <ul class="space-y-6 text-sm italic font-light text-brand-ivory/50">
+                        <li><a href="#collection" class="hover:text-brand-gold transition-colors">The Classicist</a></li>
+                        <li><a href="#collection" class="hover:text-brand-gold transition-colors">Nocturnal Skeleton</a></li>
+                        <li><a href="#collection" class="hover:text-brand-gold transition-colors">The Modernist</a></li>
+                        <li><a href="#collection" class="hover:text-brand-gold transition-colors">Limited Editions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Column -->
+                <div>
+                    <h4 class="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-10">Care & Service</h4>
+                    <ul class="space-y-6 text-sm italic font-light text-brand-ivory/50">
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Maintenance</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Bespoke Orders</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Warranty</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors">Our Boutiques</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Boutiques Cities -->
+            <div class="border-y border-white/5 py-12 mb-20">
+                <div class="flex flex-wrap justify-center md:justify-between items-center gap-12 text-[10px] uppercase tracking-[0.5em] text-white/30 italic">
+                    <span>Geneva</span>
+                    <span class="hidden md:inline w-2 h-2 rounded-full bg-brand-gold/20"></span>
+                    <span>Paris</span>
+                    <span class="hidden md:inline w-2 h-2 rounded-full bg-brand-gold/20"></span>
+                    <span>Dubai</span>
+                    <span class="hidden md:inline w-2 h-2 rounded-full bg-brand-gold/20"></span>
+                    <span>New York</span>
+                    <span class="hidden md:inline w-2 h-2 rounded-full bg-brand-gold/20"></span>
+                    <span>Tokyo</span>
+                    <span class="hidden md:inline w-2 h-2 rounded-full bg-brand-gold/20"></span>
+                    <span>London</span>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-12 text-[10px] uppercase tracking-[0.3em] text-white/20 whitespace-nowrap">
+                <div>&copy; 2024 Lal Times Ateliers. All Rights Reserved.</div>
+                <div class="flex space-x-12 italic">
+                    <a href="#" class="hover:text-brand-gold transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-gold transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-brand-gold transition-colors">Accessibility</a>
+                </div>
+                <div class="text-brand-gold flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+                    <span>Atelier Status: Online</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // --- 3D Scroll Animation Logic ---
+        const canvas = document.getElementById('hero-canvas');
+        const context = canvas.getContext('2d');
+        const scrollHeight = document.getElementById('scroll-height');
+        const progressBar = document.getElementById('progress-bar');
+        
+        const frameCount = 240;
+        const frames = [];
+        const framePrefix = 'images 3d/ezgif-frame-';
+        const frameExtension = '.png';
+
+        // Preload images
+        let loadedFrames = 0;
+        for (let i = 1; i <= frameCount; i++) {
+            const img = new Image();
+            const frameIndex = i.toString().padStart(3, '0');
+            img.src = `${framePrefix}${frameIndex}${frameExtension}`;
+            img.onload = () => {
+                loadedFrames++;
+                if (loadedFrames === frameCount) {
+                    renderFrame(0); // Initial frame
+                }
+            };
+            frames.push(img);
+        }
+
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            renderFrame(currentFrameIndex);
+        }
+
+        let currentFrameIndex = 0;
+        function renderFrame(index) {
+            if (!frames[index]) return;
+            currentFrameIndex = index;
+            
+            // Clear and draw
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const img = frames[index];
+            const canvasAspect = canvas.width / canvas.height;
+            const imgAspect = img.width / img.height;
+            
+            let drawWidth, drawHeight, x, y;
+            
+            // "Object-contain" logic for canvas
+            if (canvasAspect > imgAspect) {
+                drawHeight = canvas.height;
+                drawWidth = drawHeight * imgAspect;
+                x = (canvas.width - drawWidth) / 2;
+                y = 0;
+            } else {
+                drawWidth = canvas.width;
+                drawHeight = drawWidth / imgAspect;
+                x = 0;
+                y = (canvas.height - drawHeight) / 2;
+            }
+            
+            context.drawImage(img, x, y, drawWidth, drawHeight);
+        }
+
+        // Feature Text Management
+        const features = [
+            { el: document.getElementById('feature-1'), start: 0, end: 0.2 },
+            { el: document.getElementById('feature-2'), start: 0.25, end: 0.45 },
+            { el: document.getElementById('feature-3'), start: 0.5, end: 0.7 },
+            { el: document.getElementById('feature-4'), start: 0.75, end: 1.0 }
+        ];
+
+        function updateUI(percent) {
+            // Update progress bar
+            progressBar.style.width = `${percent * 100}%`;
+
+            // Update frame
+            const frameIndex = Math.min(frameCount - 1, Math.floor(percent * frameCount));
+            renderFrame(frameIndex);
+
+            // Update text opacity
+            features.forEach(feature => {
+                if (percent >= feature.start && percent <= feature.end) {
+                    feature.el.classList.add('opacity-100');
+                    feature.el.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    feature.el.classList.remove('opacity-100');
+                    feature.el.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const sectionRect = id('hero-3d').getBoundingClientRect();
+            const totalScroll = id('scroll-height').offsetHeight - window.innerHeight;
+            const currentScroll = -sectionRect.top;
+            
+            const percent = Math.max(0, Math.min(1, currentScroll / totalScroll));
+            requestAnimationFrame(() => updateUI(percent));
+        });
+
+        function id(name) { return document.getElementById(name); }
+
+        window.addEventListener('resize', setCanvasSize);
+        setCanvasSize();
+
+        // --- Original Scroll Reveal Logic ---
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+            el.classList.add('reveal-text');
+            observer.observe(el);
+        });
+
+        // Simple smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
